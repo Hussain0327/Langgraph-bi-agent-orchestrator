@@ -1,0 +1,432 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "options": {
+          "loadPreviousSession": "memory"
+        }
+      },
+      "id": "88cdc2c3-bbe5-4aa2-af41-d7c7d6ac8fa0",
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        2736,
+        320
+      ],
+      "webhookId": "5e2a4eb1-96ae-40d1-be6d-2f7c9330a2b3"
+    },
+    {
+      "parameters": {},
+      "id": "7d5cef2d-982e-4120-b0b3-1b0ab5c0c220",
+      "name": "Conversation Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        2808,
+        544
+      ]
+    },
+    {
+      "parameters": {
+        "text": "You are a Business Intelligence Orchestrator that MUST delegate complex queries to specialized agents.\n\nWhen you receive a business query:\n1. ALWAYS identify which specialized agents are needed\n2. CALL the appropriate agent tools to gather their analysis\n3. Synthesize their findings into a comprehensive recommendation\n\nAvailable specialized agents (YOU MUST USE THESE TOOLS):\n- market_analysis_agent: For market research, trends, competition, market sizing, customer segmentation\n- operations_audit_agent: For process optimization, efficiency analysis, workflow improvement, operational excellence  \n- financial_modeling_agent: For financial projections, ROI calculations, revenue/cost analysis, financial planning\n- lead_generation_agent: For customer acquisition strategies, sales funnel optimization, growth tactics\n\nFor complex business decisions, you MUST call multiple relevant agents and coordinate their findings. Do not attempt to answer complex queries without consulting the specialized agents.",
+        "options": {}
+      },
+      "id": "1b46f062-b7ba-44c5-9200-967e93158a59",
+      "name": "Primary Orchestrator Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        3656,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5-nano-2025-08-07",
+          "mode": "list",
+          "cachedResultName": "gpt-5-nano-2025-08-07"
+        },
+        "options": {}
+      },
+      "id": "202c1b00-7e82-42c7-9211-400f4773c1cd",
+      "name": "OpenAI Model - Orchestrator",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        3088,
+        544
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "DPYNI17H6OPfgwHm",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5-nano-2025-08-07",
+          "mode": "list",
+          "cachedResultName": "gpt-5-nano-2025-08-07"
+        },
+        "options": {}
+      },
+      "id": "f8413bd5-825c-46d3-a6b4-b4de19cf62e9",
+      "name": "OpenAI Model - Market Analysis",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        3232,
+        752
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "DPYNI17H6OPfgwHm",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5-nano-2025-08-07",
+          "mode": "list",
+          "cachedResultName": "gpt-5-nano-2025-08-07"
+        },
+        "options": {}
+      },
+      "id": "f2ecf5e4-6942-44f1-b20c-8188f9e41815",
+      "name": "OpenAI Model - Operations",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        3584,
+        752
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "DPYNI17H6OPfgwHm",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5-nano-2025-08-07",
+          "mode": "list",
+          "cachedResultName": "gpt-5-nano-2025-08-07"
+        },
+        "options": {}
+      },
+      "id": "5952f5c7-5858-435a-a532-c55ea650c815",
+      "name": "OpenAI Model - Financial",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        3792,
+        752
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "DPYNI17H6OPfgwHm",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5-nano-2025-08-07",
+          "mode": "list",
+          "cachedResultName": "gpt-5-nano-2025-08-07"
+        },
+        "options": {}
+      },
+      "id": "4e8f3ef2-e9f6-4c29-bb79-c45b8f390e70",
+      "name": "OpenAI Model - Lead Gen",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        4160,
+        752
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "DPYNI17H6OPfgwHm",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "Specialized agent for market analysis, competitive research, industry trends, market sizing, and customer segmentation. Use this agent when you need insights about markets, competitors, or industry dynamics.",
+        "text": "Conduct comprehensive market analysis based on the business query. Research market trends, competitive landscape, target audience, market size, and growth opportunities. Use the web research tool to gather current market data. Provide actionable insights and strategic recommendations.",
+        "options": {}
+      },
+      "id": "c4f4f97d-8c13-460e-8e3e-668e60f5e431",
+      "name": "market_analysis_agent",
+      "type": "@n8n/n8n-nodes-langchain.agentTool",
+      "typeVersion": 2.2,
+      "position": [
+        3216,
+        544
+      ]
+    },
+    {
+      "parameters": {
+        "toolDescription": "Specialized agent for operations audit, process optimization, efficiency analysis, workflow improvement, and operational excellence. Use this agent when you need to evaluate or improve business operations.",
+        "text": "Perform a thorough operations audit based on the business query. Analyze current processes, identify inefficiencies, bottlenecks, and improvement opportunities. Recommend process optimizations, automation opportunities, and operational best practices. Focus on scalability and efficiency.",
+        "options": {}
+      },
+      "id": "8285d8c1-145b-495e-8306-8770b2ff4c5a",
+      "name": "operations_audit_agent",
+      "type": "@n8n/n8n-nodes-langchain.agentTool",
+      "typeVersion": 2.2,
+      "position": [
+        3504,
+        544
+      ]
+    },
+    {
+      "parameters": {
+        "toolDescription": "Specialized agent for financial modeling, ROI calculations, revenue projections, cost analysis, and financial planning. Use this agent when you need financial analysis or projections.",
+        "text": "Create detailed financial models and analysis based on the business query. Calculate ROI, project revenues and costs, analyze profitability, assess financial risks, and provide budget recommendations. Use the calculator tool for precise calculations. Present findings with clear financial metrics and recommendations.",
+        "options": {}
+      },
+      "id": "767a59f6-68bb-4f9d-b115-f54716c8954f",
+      "name": "financial_modeling_agent",
+      "type": "@n8n/n8n-nodes-langchain.agentTool",
+      "typeVersion": 2.2,
+      "position": [
+        3792,
+        544
+      ]
+    },
+    {
+      "parameters": {
+        "toolDescription": "Specialized agent for lead generation strategies, customer acquisition, sales funnel optimization, and growth hacking. Use this agent when you need strategies to acquire new customers or generate leads.",
+        "text": "Develop comprehensive lead generation strategies based on the business query. Identify target customer profiles, recommend acquisition channels, design conversion funnels, suggest growth tactics, and provide actionable lead generation plans. Focus on scalable and cost-effective customer acquisition methods.",
+        "options": {}
+      },
+      "id": "e42f48b7-b5bd-4b2b-8e56-6558ea1c92f4",
+      "name": "lead_generation_agent",
+      "type": "@n8n/n8n-nodes-langchain.agentTool",
+      "typeVersion": 2.2,
+      "position": [
+        4080,
+        544
+      ]
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        4368,
+        544
+      ],
+      "id": "e3e087f3-32d8-4d9b-aaf5-6c6aa6931936",
+      "name": "Think"
+    },
+    {
+      "parameters": {
+        "description": "Search the web for current information, market data, industry trends, competitor information, and business intelligence. Use this when you need up-to-date information from the internet.",
+        "jsCode": "const query = $input.item.json.query || \"business intelligence\";\n\n// Simulated web research - in production, integrate with actual search APIs\nconst results = {\n  query: query,\n  timestamp: new Date().toISOString(),\n  sources: [\n    { title: \"Industry Report\", url: \"https://example.com/report\", summary: \"Market analysis data\" },\n    { title: \"Competitor Analysis\", url: \"https://example.com/competitor\", summary: \"Competitive landscape insights\" }\n  ],\n  insights: `Research results for: ${query}. Note: Connect to real search APIs (Google, Bing, etc.) for production use.`\n};\n\nreturn { json: results };"
+      },
+      "id": "3665b472-839a-46e6-a934-93c32f6e2aa3",
+      "name": "web_research_tool",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.3,
+      "position": [
+        3376,
+        752
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "4b572fd7-c389-4092-8f17-7532bdfb93a3",
+      "name": "calculator_tool",
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        3952,
+        752
+      ]
+    }
+  ],
+  "connections": {
+    "Chat Trigger": {
+      "main": [
+        [
+          {
+            "node": "Primary Orchestrator Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conversation Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Chat Trigger",
+            "type": "ai_memory",
+            "index": 0
+          },
+          {
+            "node": "Primary Orchestrator Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Model - Orchestrator": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Primary Orchestrator Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Model - Market Analysis": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "market_analysis_agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Model - Operations": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "operations_audit_agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Model - Financial": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "financial_modeling_agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Model - Lead Gen": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "lead_generation_agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "market_analysis_agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "Primary Orchestrator Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "operations_audit_agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "Primary Orchestrator Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "financial_modeling_agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "Primary Orchestrator Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "lead_generation_agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "Primary Orchestrator Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think": {
+      "ai_tool": [
+        [
+          {
+            "node": "Primary Orchestrator Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "web_research_tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "market_analysis_agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "calculator_tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "financial_modeling_agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "debe6d30407a42df73a57abc7a04afa247b1969021d0a5effcc4f81710755278"
+  }
+}
