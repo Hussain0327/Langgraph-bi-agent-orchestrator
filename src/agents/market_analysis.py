@@ -27,27 +27,47 @@ When analyzing markets, provide:
 4. Customer segments and target personas
 5. Strategic recommendations based on market insights
 
+**Citation Requirements**:
+- When academic research is provided, reference it to support your analysis
+- Format citations as: [Your insight] (Source: Author et al., Year)
+- Include a "References" section at the end with full citations
+- Prioritize evidence-based insights over speculation
+
 Always base your analysis on data and provide actionable insights."""
 
-    def analyze(self, query: str, web_research_results: Dict[str, Any] = None) -> str:
+    def analyze(
+        self,
+        query: str,
+        web_research_results: Dict[str, Any] = None,
+        research_context: str = None
+    ) -> str:
         """Conduct comprehensive market analysis.
 
         Args:
             query: Business query to analyze
             web_research_results: Optional web research data to inform analysis
+            research_context: Optional academic research context with citations
 
         Returns:
-            Market analysis findings and recommendations
+            Market analysis findings and recommendations (with citations if research provided)
         """
         # Build the prompt with context
         user_prompt = f"""Conduct comprehensive market analysis for the following business query:
 
 {query}"""
 
+        # Add research context if available (highest priority)
+        if research_context:
+            user_prompt += f"\n\n{research_context}"
+
+        # Add web research as supplementary context
         if web_research_results:
             user_prompt += f"\n\nWeb Research Data:\n{web_research_results.get('insights', '')}"
 
         user_prompt += "\n\nProvide actionable market insights and strategic recommendations."
+
+        if research_context:
+            user_prompt += "\n\nIMPORTANT: Reference the academic sources above in your analysis using proper citations."
 
         try:
             return self.gpt5.generate(

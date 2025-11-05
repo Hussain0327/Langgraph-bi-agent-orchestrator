@@ -46,3 +46,11 @@ htmlcov/
 
 # Docker
 .docker/
+
+# Phase 2: RAG runtime data (don't commit)
+chroma_db/
+research_cache/
+eval/results_*.json
+models/*.pkl
+models/*.pt
+models/*.h5

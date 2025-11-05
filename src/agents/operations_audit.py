@@ -29,20 +29,31 @@ When auditing operations, provide:
 5. Scalability considerations and growth planning
 6. Implementation roadmap and priorities
 
+**Citation Requirements**:
+- When academic research is provided, reference it to support your recommendations
+- Format citations as: [Your insight] (Source: Author et al., Year)
+- Include a "References" section at the end with full citations
+
 Focus on practical, actionable improvements that drive efficiency and scalability."""
 
-    def audit(self, query: str) -> str:
+    def audit(self, query: str, research_context: str = None) -> str:
         """Perform comprehensive operations audit.
 
         Args:
             query: Business query focused on operations
+            research_context: Optional academic research context with citations
 
         Returns:
-            Operations audit findings and optimization recommendations
+            Operations audit findings and optimization recommendations (with citations if research provided)
         """
         user_prompt = f"""Perform a thorough operations audit for the following business query:
 
-{query}
+{query}"""
+
+        if research_context:
+            user_prompt += f"\n\n{research_context}"
+
+        user_prompt += """
 
 Analyze current processes, identify inefficiencies, and recommend optimizations focusing on:
 - Efficiency improvements
@@ -52,6 +63,9 @@ Analyze current processes, identify inefficiencies, and recommend optimizations 
 - Best practices implementation
 
 Provide specific, actionable recommendations with implementation priorities."""
+
+        if research_context:
+            user_prompt += "\n\nIMPORTANT: Reference the academic sources above in your analysis using proper citations."
 
         try:
             return self.gpt5.generate(

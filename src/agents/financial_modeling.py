@@ -31,21 +31,35 @@ When creating financial models, provide:
 6. Risk factors and sensitivity analysis
 7. Financial recommendations with supporting data
 
+**Citation Requirements**:
+- When academic research is provided, reference it to support your financial models
+- Format citations as: [Your insight] (Source: Author et al., Year)
+- Include a "References" section at the end with full citations
+
 Use the calculator tool for precise financial calculations. Present findings with clear metrics and actionable financial guidance."""
 
-    def model_financials(self, query: str, calculator_results: Dict[str, Any] = None) -> str:
+    def model_financials(
+        self,
+        query: str,
+        calculator_results: Dict[str, Any] = None,
+        research_context: str = None
+    ) -> str:
         """Create detailed financial models and analysis.
 
         Args:
             query: Business query requiring financial analysis
             calculator_results: Optional calculation results to incorporate
+            research_context: Optional academic research context with citations
 
         Returns:
-            Financial analysis and recommendations
+            Financial analysis and recommendations (with citations if research provided)
         """
         user_prompt = f"""Create detailed financial models and analysis for the following business query:
 
 {query}"""
+
+        if research_context:
+            user_prompt += f"\n\n{research_context}"
 
         if calculator_results:
             user_prompt += f"\n\nCalculation Results:\n{calculator_results}"
@@ -61,6 +75,9 @@ Provide comprehensive financial analysis including:
 - Actionable financial guidance
 
 Use specific numbers and financial metrics where possible."""
+
+        if research_context:
+            user_prompt += "\n\nIMPORTANT: Reference the academic sources above in your analysis using proper citations."
 
         try:
             return self.gpt5.generate(
