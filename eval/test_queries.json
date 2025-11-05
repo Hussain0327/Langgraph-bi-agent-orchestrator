@@ -1,0 +1,241 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2025-11-05",
+    "description": "Test query suite for evaluating Business Intelligence Orchestrator",
+    "total_queries": 25
+  },
+  "queries": [
+    {
+      "id": 1,
+      "query": "How can I improve customer retention for my B2B SaaS product?",
+      "expected_agents": ["market", "operations", "leadgen"],
+      "complexity": "high",
+      "category": "retention",
+      "expected_citations": true
+    },
+    {
+      "id": 2,
+      "query": "What pricing model should I use for a new SaaS product?",
+      "expected_agents": ["market", "financial"],
+      "complexity": "medium",
+      "category": "pricing",
+      "expected_citations": true
+    },
+    {
+      "id": 3,
+      "query": "How can I reduce customer acquisition cost?",
+      "expected_agents": ["market", "leadgen", "financial"],
+      "complexity": "medium",
+      "category": "growth",
+      "expected_citations": true
+    },
+    {
+      "id": 4,
+      "query": "What are the best practices for onboarding new SaaS customers?",
+      "expected_agents": ["operations", "market"],
+      "complexity": "medium",
+      "category": "onboarding",
+      "expected_citations": true
+    },
+    {
+      "id": 5,
+      "query": "Should I focus on product-led growth or sales-led growth for my B2B startup?",
+      "expected_agents": ["market", "leadgen", "financial"],
+      "complexity": "high",
+      "category": "strategy",
+      "expected_citations": true
+    },
+    {
+      "id": 6,
+      "query": "How do I optimize my sales funnel for enterprise customers?",
+      "expected_agents": ["leadgen", "operations"],
+      "complexity": "medium",
+      "category": "sales",
+      "expected_citations": true
+    },
+    {
+      "id": 7,
+      "query": "What metrics should I track for a SaaS business?",
+      "expected_agents": ["financial", "operations"],
+      "complexity": "low",
+      "category": "metrics",
+      "expected_citations": false
+    },
+    {
+      "id": 8,
+      "query": "How can I increase my ARR from $1M to $5M?",
+      "expected_agents": ["market", "financial", "leadgen"],
+      "complexity": "high",
+      "category": "growth",
+      "expected_citations": true
+    },
+    {
+      "id": 9,
+      "query": "What are effective strategies for upselling existing customers?",
+      "expected_agents": ["leadgen", "market"],
+      "complexity": "medium",
+      "category": "expansion",
+      "expected_citations": true
+    },
+    {
+      "id": 10,
+      "query": "How do I build a scalable customer support process?",
+      "expected_agents": ["operations"],
+      "complexity": "medium",
+      "category": "operations",
+      "expected_citations": true
+    },
+    {
+      "id": 11,
+      "query": "What's the ideal LTV:CAC ratio for a SaaS business?",
+      "expected_agents": ["financial", "market"],
+      "complexity": "low",
+      "category": "metrics",
+      "expected_citations": true
+    },
+    {
+      "id": 12,
+      "query": "How can I expand into the enterprise market?",
+      "expected_agents": ["market", "leadgen", "operations"],
+      "complexity": "high",
+      "category": "expansion",
+      "expected_citations": true
+    },
+    {
+      "id": 13,
+      "query": "What are the key drivers of SaaS valuation?",
+      "expected_agents": ["financial", "market"],
+      "complexity": "medium",
+      "category": "finance",
+      "expected_citations": true
+    },
+    {
+      "id": 14,
+      "query": "How do I improve my free-to-paid conversion rate?",
+      "expected_agents": ["leadgen", "operations", "market"],
+      "complexity": "medium",
+      "category": "conversion",
+      "expected_citations": true
+    },
+    {
+      "id": 15,
+      "query": "What's the best way to enter a competitive market?",
+      "expected_agents": ["market", "leadgen"],
+      "complexity": "high",
+      "category": "strategy",
+      "expected_citations": true
+    },
+    {
+      "id": 16,
+      "query": "How can I automate my sales process?",
+      "expected_agents": ["operations", "leadgen"],
+      "complexity": "medium",
+      "category": "automation",
+      "expected_citations": true
+    },
+    {
+      "id": 17,
+      "query": "What are the most effective B2B marketing channels?",
+      "expected_agents": ["leadgen", "market"],
+      "complexity": "medium",
+      "category": "marketing",
+      "expected_citations": true
+    },
+    {
+      "id": 18,
+      "query": "How do I calculate burn rate and runway?",
+      "expected_agents": ["financial"],
+      "complexity": "low",
+      "category": "finance",
+      "expected_citations": false
+    },
+    {
+      "id": 19,
+      "query": "What's the optimal pricing strategy for a multi-product SaaS company?",
+      "expected_agents": ["financial", "market"],
+      "complexity": "high",
+      "category": "pricing",
+      "expected_citations": true
+    },
+    {
+      "id": 20,
+      "query": "How can I reduce churn in the first 90 days?",
+      "expected_agents": ["operations", "market", "leadgen"],
+      "complexity": "high",
+      "category": "retention",
+      "expected_citations": true
+    },
+    {
+      "id": 21,
+      "query": "What are the best practices for building a sales team?",
+      "expected_agents": ["leadgen", "operations"],
+      "complexity": "medium",
+      "category": "hiring",
+      "expected_citations": true
+    },
+    {
+      "id": 22,
+      "query": "How do I identify my ideal customer profile?",
+      "expected_agents": ["market", "leadgen"],
+      "complexity": "medium",
+      "category": "targeting",
+      "expected_citations": true
+    },
+    {
+      "id": 23,
+      "query": "What are effective strategies for reducing operational costs?",
+      "expected_agents": ["operations", "financial"],
+      "complexity": "medium",
+      "category": "optimization",
+      "expected_citations": true
+    },
+    {
+      "id": 24,
+      "query": "How can I build a content marketing strategy for B2B SaaS?",
+      "expected_agents": ["leadgen", "market"],
+      "complexity": "medium",
+      "category": "marketing",
+      "expected_citations": true
+    },
+    {
+      "id": 25,
+      "query": "What are the key differences between PLG and SLG strategies?",
+      "expected_agents": ["market", "leadgen", "financial"],
+      "complexity": "medium",
+      "category": "strategy",
+      "expected_citations": true
+    }
+  ],
+  "query_distribution": {
+    "by_complexity": {
+      "low": 3,
+      "medium": 16,
+      "high": 6
+    },
+    "by_category": {
+      "retention": 2,
+      "pricing": 2,
+      "growth": 2,
+      "onboarding": 1,
+      "strategy": 3,
+      "sales": 1,
+      "metrics": 2,
+      "expansion": 2,
+      "operations": 1,
+      "finance": 2,
+      "conversion": 1,
+      "automation": 1,
+      "marketing": 2,
+      "hiring": 1,
+      "targeting": 1,
+      "optimization": 1
+    },
+    "by_agent": {
+      "market": 20,
+      "leadgen": 17,
+      "financial": 11,
+      "operations": 12
+    }
+  }
+}

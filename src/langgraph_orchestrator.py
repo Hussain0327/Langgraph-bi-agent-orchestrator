@@ -10,6 +10,7 @@ from src.agents.market_analysis import MarketAnalysisAgent
 from src.agents.operations_audit import OperationsAuditAgent
 from src.agents.financial_modeling import FinancialModelingAgent
 from src.agents.lead_generation import LeadGenerationAgent
+from src.agents.research_synthesis import ResearchSynthesisAgent
 from src.tools.web_research import WebResearchTool
 from src.memory import ConversationMemory
 from src.config import Config
@@ -19,6 +20,9 @@ class AgentState(TypedDict):
     """State object passed between nodes in the graph."""
     query: str
     agents_to_call: List[str]
+    research_enabled: bool
+    research_findings: Dict[str, Any]
+    research_context: str
     market_analysis: str
     operations_audit: str
     financial_modeling: str
@@ -37,14 +41,29 @@ class LangGraphOrchestrator:
         User Query → Router Node → Parallel Agent Execution → Synthesis Node → Result
     """
 
-    def __init__(self):
+    def __init__(self, enable_rag: bool = True):
+        """
+        Initialize the LangGraph Orchestrator.
+
+        Args:
+            enable_rag: Enable research-augmented generation (default: True)
+        """
         self.gpt5 = GPT5Wrapper()
+        self.enable_rag = enable_rag
 
         # Initialize agents
         self.market_agent = MarketAnalysisAgent()
         self.operations_agent = OperationsAuditAgent()
         self.financial_agent = FinancialModelingAgent()
         self.lead_gen_agent = LeadGenerationAgent()
+
+        # Initialize research agent (RAG)
+        if self.enable_rag:
+            self.research_agent = ResearchSynthesisAgent()
+            print("✓ RAG enabled - Research Synthesis Agent initialized")
+        else:
+            self.research_agent = None
+            print("⚠️  RAG disabled - Running without research augmentation")
 
         # Initialize tools
         self.web_research = WebResearchTool()
@@ -61,6 +80,11 @@ class LangGraphOrchestrator:
 
         # Add nodes
         workflow.add_node("router", self._router_node)
+
+        # Add research synthesis node (RAG) if enabled
+        if self.enable_rag:
+            workflow.add_node("research_synthesis", self._research_synthesis_node)
+
         workflow.add_node("market_agent", self._market_agent_node)
         workflow.add_node("operations_agent", self._operations_agent_node)
         workflow.add_node("financial_agent", self._financial_agent_node)
@@ -70,18 +94,35 @@ class LangGraphOrchestrator:
         # Set entry point
         workflow.set_entry_point("router")
 
-        # Add conditional edges from router to agents
-        workflow.add_conditional_edges(
-            "router",
-            self._route_to_agents,
-            {
-                "market": "market_agent",
-                "operations": "operations_agent",
-                "financial": "financial_agent",
-                "leadgen": "leadgen_agent",
-                "synthesis": "synthesis",  # If no agents needed, go straight to synthesis
-            }
-        )
+        # Router → Research Synthesis (if RAG enabled) or directly to agents
+        if self.enable_rag:
+            workflow.add_edge("router", "research_synthesis")
+
+            # Research synthesis → First agent
+            workflow.add_conditional_edges(
+                "research_synthesis",
+                self._route_to_agents,
+                {
+                    "market": "market_agent",
+                    "operations": "operations_agent",
+                    "financial": "financial_agent",
+                    "leadgen": "leadgen_agent",
+                    "synthesis": "synthesis",
+                }
+            )
+        else:
+            # Direct routing without research synthesis
+            workflow.add_conditional_edges(
+                "router",
+                self._route_to_agents,
+                {
+                    "market": "market_agent",
+                    "operations": "operations_agent",
+                    "financial": "financial_agent",
+                    "leadgen": "leadgen_agent",
+                    "synthesis": "synthesis",
+                }
+            )
 
         # All agents go to synthesis
         workflow.add_edge("market_agent", "synthesis")
@@ -144,6 +185,48 @@ Only output the JSON array, nothing else."""
         state["agents_to_call"] = agents_to_call
         return state
 
+    @traceable(name="research_synthesis")
+    def _research_synthesis_node(self, state: AgentState) -> AgentState:
+        """
+        Research synthesis node: Retrieves and synthesizes academic research.
+
+        Only runs if RAG is enabled.
+        """
+        if not self.enable_rag or not self.research_agent:
+            state["research_findings"] = {}
+            state["research_context"] = ""
+            return state
+
+        query = state["query"]
+
+        print("\n📚 Retrieving academic research...")
+
+        try:
+            # Retrieve and synthesize research
+            research_result = self.research_agent.synthesize(
+                query=query,
+                retrieve_papers=True,
+                top_k_papers=3
+            )
+
+            state["research_findings"] = research_result
+            state["research_context"] = research_result.get("research_context", "")
+
+            paper_count = research_result.get("paper_count", 0)
+            if paper_count > 0:
+                print(f"✓ Retrieved {paper_count} relevant papers")
+                print(f"✓ Research synthesis complete")
+            else:
+                print("⚠️  No relevant research found - continuing without RAG")
+
+        except Exception as e:
+            print(f"⚠️  Research synthesis failed: {e}")
+            print("   Continuing without research augmentation...")
+            state["research_findings"] = {}
+            state["research_context"] = ""
+
+        return state
+
     def _route_to_agents(self, state: AgentState) -> str:
         """Conditional edge function: Routes to appropriate agents based on router decision."""
         agents_to_call = state.get("agents_to_call", [])
@@ -166,8 +249,13 @@ Only output the JSON array, nothing else."""
                 web_results = self.web_research.execute(state["query"])
                 state["web_research"] = web_results
 
+            # Get research context if available
+            research_context = state.get("research_context", "")
+
             state["market_analysis"] = self.market_agent.analyze(
-                state["query"], web_results
+                query=state["query"],
+                web_research_results=web_results,
+                research_context=research_context
             )
         return state
 
@@ -175,15 +263,23 @@ Only output the JSON array, nothing else."""
     def _operations_agent_node(self, state: AgentState) -> AgentState:
         """Operations audit agent node."""
         if "operations" in state.get("agents_to_call", []):
-            state["operations_audit"] = self.operations_agent.audit(state["query"])
+            research_context = state.get("research_context", "")
+
+            state["operations_audit"] = self.operations_agent.audit(
+                query=state["query"],
+                research_context=research_context
+            )
         return state
 
     @traceable(name="financial_agent")
     def _financial_agent_node(self, state: AgentState) -> AgentState:
         """Financial modeling agent node."""
         if "financial" in state.get("agents_to_call", []):
+            research_context = state.get("research_context", "")
+
             state["financial_modeling"] = self.financial_agent.model_financials(
-                state["query"]
+                query=state["query"],
+                research_context=research_context
             )
         return state
 
@@ -191,8 +287,11 @@ Only output the JSON array, nothing else."""
     def _leadgen_agent_node(self, state: AgentState) -> AgentState:
         """Lead generation agent node."""
         if "leadgen" in state.get("agents_to_call", []):
+            research_context = state.get("research_context", "")
+
             state["lead_generation"] = self.lead_gen_agent.generate_strategy(
-                state["query"]
+                query=state["query"],
+                research_context=research_context
             )
         return state
 
@@ -309,6 +408,9 @@ Provide an executive summary followed by detailed recommendations."""
         initial_state: AgentState = {
             "query": query,
             "agents_to_call": [],
+            "research_enabled": self.enable_rag,
+            "research_findings": {},
+            "research_context": "",
             "market_analysis": "",
             "operations_audit": "",
             "financial_modeling": "",

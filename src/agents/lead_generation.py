@@ -33,20 +33,31 @@ When developing lead generation strategies, provide:
 7. Scalable and sustainable acquisition playbook
 8. Metrics and KPIs to track
 
+**Citation Requirements**:
+- When academic research is provided, reference it to support your recommendations
+- Format citations as: [Your insight] (Source: Author et al., Year)
+- Include a "References" section at the end with full citations
+
 Focus on practical, cost-effective strategies that drive predictable growth."""
 
-    def generate_strategy(self, query: str) -> str:
+    def generate_strategy(self, query: str, research_context: str = None) -> str:
         """Develop comprehensive lead generation strategies.
 
         Args:
             query: Business query focused on customer acquisition
+            research_context: Optional academic research context with citations
 
         Returns:
-            Lead generation strategies and growth recommendations
+            Lead generation strategies and growth recommendations (with citations if research provided)
         """
         user_prompt = f"""Develop comprehensive lead generation strategies for the following business query:
 
-{query}
+{query}"""
+
+        if research_context:
+            user_prompt += f"\n\n{research_context}"
+
+        user_prompt += """
 
 Provide actionable strategies covering:
 - Target customer identification and segmentation
@@ -58,6 +69,9 @@ Provide actionable strategies covering:
 - Metrics and success criteria
 
 Focus on scalable, cost-effective customer acquisition methods."""
+
+        if research_context:
+            user_prompt += "\n\nIMPORTANT: Reference the academic sources above in your analysis using proper citations."
 
         try:
             return self.gpt5.generate(
