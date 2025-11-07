@@ -1,0 +1,1346 @@
+{
+  "metadata": {
+    "created_at": "2025-11-06T21:07:33.105470",
+    "project_name": "business-intelligence-orchestrator",
+    "total_examples": 150,
+    "real_examples": 0,
+    "synthetic_examples": 150,
+    "splits": {
+      "train": 105,
+      "val": 22,
+      "test": 23
+    },
+    "valid_agents": [
+      "market",
+      "operations",
+      "financial",
+      "leadgen"
+    ]
+  },
+  "train": [
+    {
+      "query": "How big is the market for B2B software-as-a-service offerings?",
+      "agents": [
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:09.393338",
+      "synthetic": true
+    },
+    {
+      "query": "Are we better off outsourcing our customer support?",
+      "agents": [
+        "financial",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:07.024542",
+      "synthetic": true
+    },
+    {
+      "query": "How can we optimize the customer onboarding process with proven practices?",
+      "agents": [
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:21.385211",
+      "synthetic": true
+    },
+    {
+      "query": "Which communications truly connect with our core market?",
+      "agents": [
+        "leadgen",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:07:15.038032",
+      "synthetic": true
+    },
+    {
+      "query": "What's the ROI for this marketing campaign?",
+      "agents": [
+        "financial"
+      ],
+      "timestamp": "2025-11-06T21:06:25.615762",
+      "synthetic": true
+    },
+    {
+      "query": "How do we improve our sales funnel conversion?",
+      "agents": [
+        "leadgen"
+      ],
+      "timestamp": "2025-11-06T21:06:39.083072",
+      "synthetic": true
+    },
+    {
+      "query": "How can we improve the efficiency of our fulfillment workflow?",
+      "agents": [
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:18.470561",
+      "synthetic": true
+    },
+    {
+      "query": "What factors are driving customers to leave?",
+      "agents": [
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:45.527226",
+      "synthetic": true
+    },
+    {
+      "query": "What's a complete go-to-market strategy?",
+      "agents": [
+        "leadgen",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:29.062554",
+      "synthetic": true
+    },
+    {
+      "query": "What are best practices for customer onboarding?",
+      "agents": [
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:21.385199",
+      "synthetic": true
+    },
+    {
+      "query": "How can we enter additional market segments?",
+      "agents": [
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:48.946789",
+      "synthetic": true
+    },
+    {
+      "query": "What strategies can we use to scale our SaaS business?",
+      "agents": [
+        "financial",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:17.422617",
+      "synthetic": true
+    },
+    {
+      "query": "What return on investment did this marketing campaign deliver?",
+      "agents": [
+        "financial"
+      ],
+      "timestamp": "2025-11-06T21:06:25.615771",
+      "synthetic": true
+    },
+    {
+      "query": "What does a full go-to-market plan look like?",
+      "agents": [
+        "leadgen",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:29.062566",
+      "synthetic": true
+    },
+    {
+      "query": "What changes would make our fulfillment process more effective?",
+      "agents": [
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:18.470564",
+      "synthetic": true
+    },
+    {
+      "query": "How can we improve our lead generation to attract more suitable prospects?",
+      "agents": [
+        "leadgen"
+      ],
+      "timestamp": "2025-11-06T21:06:33.352557",
+      "synthetic": true
+    },
+    {
+      "query": "Who are our ideal customers to target?",
+      "agents": [
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:15.135363",
+      "synthetic": true
+    },
+    {
+      "query": "What strategies can we use to attract more high-quality leads?",
+      "agents": [
+        "leadgen"
+      ],
+      "timestamp": "2025-11-06T21:06:33.352552",
+      "synthetic": true
+    },
+    {
+      "query": "What's our customer acquisition cost?",
+      "agents": [
+        "financial"
+      ],
+      "timestamp": "2025-11-06T21:06:31.131218",
+      "synthetic": true
+    },
+    {
+      "query": "Is it time to raise the premium tier pricing?",
+      "agents": [
+        "financial",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:51.606837",
+      "synthetic": true
+    },
+    {
+      "query": "Who are the key competitors in the e-commerce market?",
+      "agents": [
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:12.687776",
+      "synthetic": true
+    },
+    {
+      "query": "Should we consider outsourcing the customer support function?",
+      "agents": [
+        "financial",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:07.024543",
+      "synthetic": true
+    },
+    {
+      "query": "What steps are needed to build a go-to-market sales engine for our product?",
+      "agents": [
+        "leadgen",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:26.079737",
+      "synthetic": true
+    },
+    {
+      "query": "Do we need to elevate the price of our premium tier?",
+      "agents": [
+        "financial",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:51.606840",
+      "synthetic": true
+    },
+    {
+      "query": "What's the optimal way to conduct outreach via cold emails?",
+      "agents": [
+        "leadgen"
+      ],
+      "timestamp": "2025-11-06T21:06:35.655633",
+      "synthetic": true
+    },
+    {
+      "query": "What's causing customer churn?",
+      "agents": [
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:45.527216",
+      "synthetic": true
+    },
+    {
+      "query": "How can we create a sales engine around our product?",
+      "agents": [
+        "leadgen",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:26.079732",
+      "synthetic": true
+    },
+    {
+      "query": "How do we determine the pricing for our new feature?",
+      "agents": [
+        "financial"
+      ],
+      "timestamp": "2025-11-06T21:06:28.092024",
+      "synthetic": true
+    },
+    {
+      "query": "Where's the growth potential for our new product in the market?",
+      "agents": [
+        "financial",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:54.945153",
+      "synthetic": true
+    },
+    {
+      "query": "Would it make sense for us to outsource our customer support?",
+      "agents": [
+        "financial",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:07.024540",
+      "synthetic": true
+    },
+    {
+      "query": "How do we expand into new market segments?",
+      "agents": [
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:48.946774",
+      "synthetic": true
+    },
+    {
+      "query": "How do we design and implement a sales engine for our product?",
+      "agents": [
+        "leadgen",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:26.079735",
+      "synthetic": true
+    },
+    {
+      "query": "How do we maximize revenue per customer?",
+      "agents": [
+        "financial",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:56.877022",
+      "synthetic": true
+    },
+    {
+      "query": "How can we target and engage large enterprise customers?",
+      "agents": [
+        "leadgen",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:07:13.037613",
+      "synthetic": true
+    },
+    {
+      "query": "How large is the B2B SaaS market?",
+      "agents": [
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:09.393343",
+      "synthetic": true
+    },
+    {
+      "query": "What should we consider as best practices for onboarding new customers?",
+      "agents": [
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:21.385208",
+      "synthetic": true
+    },
+    {
+      "query": "Which approaches work best when bringing customers onto our platform?",
+      "agents": [
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:21.385210",
+      "synthetic": true
+    },
+    {
+      "query": "Which outreach strategy works best for cold emails?",
+      "agents": [
+        "leadgen"
+      ],
+      "timestamp": "2025-11-06T21:06:35.655630",
+      "synthetic": true
+    },
+    {
+      "query": "How can we grow our customer base and improve retention without wasting resources?",
+      "agents": [
+        "leadgen",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:33.104387",
+      "synthetic": true
+    },
+    {
+      "query": "How can we best drive growth for our new business?",
+      "agents": [
+        "financial",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:20.926481",
+      "synthetic": true
+    },
+    {
+      "query": "What changes could we implement to improve customer retention?",
+      "agents": [
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:41.801037",
+      "synthetic": true
+    },
+    {
+      "query": "How can we optimize our sales funnel to convert more leads?",
+      "agents": [
+        "leadgen"
+      ],
+      "timestamp": "2025-11-06T21:06:39.083087",
+      "synthetic": true
+    },
+    {
+      "query": "Which approaches could help us trim operational spending?",
+      "agents": [
+        "financial",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:58.680026",
+      "synthetic": true
+    },
+    {
+      "query": "What's the top approach to accelerate growth for our startup?",
+      "agents": [
+        "financial",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:20.926483",
+      "synthetic": true
+    },
+    {
+      "query": "What kind of ROI did we get from this marketing push?",
+      "agents": [
+        "financial"
+      ],
+      "timestamp": "2025-11-06T21:06:25.615775",
+      "synthetic": true
+    },
+    {
+      "query": "Should we outsource customer support?",
+      "agents": [
+        "financial",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:07.024532",
+      "synthetic": true
+    },
+    {
+      "query": "What size is the market opportunity for our new product?",
+      "agents": [
+        "financial",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:54.945149",
+      "synthetic": true
+    },
+    {
+      "query": "How profitable was this marketing campaign?",
+      "agents": [
+        "financial"
+      ],
+      "timestamp": "2025-11-06T21:06:25.615773",
+      "synthetic": true
+    },
+    {
+      "query": "Which issues are causing our customers to cancel?",
+      "agents": [
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:45.527229",
+      "synthetic": true
+    },
+    {
+      "query": "How can we accelerate growth and scale our SaaS company?",
+      "agents": [
+        "financial",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:17.422618",
+      "synthetic": true
+    },
+    {
+      "query": "What customer segments should we target?",
+      "agents": [
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:15.135336",
+      "synthetic": true
+    },
+    {
+      "query": "How can we optimize the profitability of each unit sold?",
+      "agents": [
+        "financial",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:22.719143",
+      "synthetic": true
+    },
+    {
+      "query": "What\u2019s behind the churn in our customer base?",
+      "agents": [
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:45.527230",
+      "synthetic": true
+    },
+    {
+      "query": "How big is the market we can capture with our new product?",
+      "agents": [
+        "financial",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:54.945150",
+      "synthetic": true
+    },
+    {
+      "query": "What steps can we take to lower the number of support tickets?",
+      "agents": [
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:23.544794",
+      "synthetic": true
+    },
+    {
+      "query": "What steps can we take to improve how long customers stay with us?",
+      "agents": [
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:41.801034",
+      "synthetic": true
+    },
+    {
+      "query": "What messaging aspects best persuade our target customers?",
+      "agents": [
+        "leadgen",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:07:15.038034",
+      "synthetic": true
+    },
+    {
+      "query": "How do we scale our SaaS business?",
+      "agents": [
+        "financial",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:17.422607",
+      "synthetic": true
+    },
+    {
+      "query": "What strategies would reduce the amount of support inquiries we receive?",
+      "agents": [
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:23.544798",
+      "synthetic": true
+    },
+    {
+      "query": "How do we expand our SaaS business to handle more customers and revenue?",
+      "agents": [
+        "financial",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:17.422621",
+      "synthetic": true
+    },
+    {
+      "query": "What steps can we take to streamline our order fulfillment?",
+      "agents": [
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:18.470558",
+      "synthetic": true
+    },
+    {
+      "query": "Should we increase the price of our premium tier?",
+      "agents": [
+        "financial",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:51.606835",
+      "synthetic": true
+    },
+    {
+      "query": "What's the best outreach strategy for cold emails?",
+      "agents": [
+        "leadgen"
+      ],
+      "timestamp": "2025-11-06T21:06:35.655620",
+      "synthetic": true
+    },
+    {
+      "query": "What changes should we make to increase conversions through our funnel?",
+      "agents": [
+        "leadgen"
+      ],
+      "timestamp": "2025-11-06T21:06:39.083092",
+      "synthetic": true
+    },
+    {
+      "query": "Which channels and tactics are best for reaching corporate clients?",
+      "agents": [
+        "leadgen",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:07:13.037615",
+      "synthetic": true
+    },
+    {
+      "query": "What messaging lands well with the people we're trying to reach?",
+      "agents": [
+        "leadgen",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:07:15.038030",
+      "synthetic": true
+    },
+    {
+      "query": "What price should we set for our new feature?",
+      "agents": [
+        "financial"
+      ],
+      "timestamp": "2025-11-06T21:06:28.092021",
+      "synthetic": true
+    },
+    {
+      "query": "How long will it take for this automation to pay for itself?",
+      "agents": [
+        "financial",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:02.341190",
+      "synthetic": true
+    },
+    {
+      "query": "What steps should we take to reach new customer segments?",
+      "agents": [
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:48.946786",
+      "synthetic": true
+    },
+    {
+      "query": "What is our cost to acquire a customer?",
+      "agents": [
+        "financial"
+      ],
+      "timestamp": "2025-11-06T21:06:31.131229",
+      "synthetic": true
+    },
+    {
+      "query": "At what price point should we offer the new feature?",
+      "agents": [
+        "financial"
+      ],
+      "timestamp": "2025-11-06T21:06:28.092030",
+      "synthetic": true
+    },
+    {
+      "query": "What\u2019s the market size of B2B SaaS solutions?",
+      "agents": [
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:09.393341",
+      "synthetic": true
+    },
+    {
+      "query": "Which segments should we prioritize in our outreach?",
+      "agents": [
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:15.135365",
+      "synthetic": true
+    },
+    {
+      "query": "How might we target and penetrate new market segments?",
+      "agents": [
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:48.946794",
+      "synthetic": true
+    },
+    {
+      "query": "What steps can we take to cut our operating expenses?",
+      "agents": [
+        "financial",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:58.680020",
+      "synthetic": true
+    },
+    {
+      "query": "What messaging resonates with our target market?",
+      "agents": [
+        "leadgen",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:07:15.038014",
+      "synthetic": true
+    },
+    {
+      "query": "What's the payback period for this automation?",
+      "agents": [
+        "financial",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:02.341181",
+      "synthetic": true
+    },
+    {
+      "query": "How do we increase how much money we derive from each customer?",
+      "agents": [
+        "financial",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:56.877033",
+      "synthetic": true
+    },
+    {
+      "query": "What market opportunity does our new product present?",
+      "agents": [
+        "financial",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:54.945152",
+      "synthetic": true
+    },
+    {
+      "query": "What\u2019s the best way to boost revenue per individual customer?",
+      "agents": [
+        "financial",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:56.877032",
+      "synthetic": true
+    },
+    {
+      "query": "What steps should we take to grow our SaaS business at scale?",
+      "agents": [
+        "financial",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:17.422620",
+      "synthetic": true
+    },
+    {
+      "query": "In what ways can we improve the effectiveness of our sales funnel?",
+      "agents": [
+        "leadgen"
+      ],
+      "timestamp": "2025-11-06T21:06:39.083090",
+      "synthetic": true
+    },
+    {
+      "query": "Which growth strategy should we prioritize to scale our startup?",
+      "agents": [
+        "financial",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:20.926480",
+      "synthetic": true
+    },
+    {
+      "query": "Should we bump up the cost for the premium plan?",
+      "agents": [
+        "financial",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:51.606839",
+      "synthetic": true
+    },
+    {
+      "query": "How much do we spend to acquire a new customer?",
+      "agents": [
+        "financial"
+      ],
+      "timestamp": "2025-11-06T21:06:31.131227",
+      "synthetic": true
+    },
+    {
+      "query": "What are the most effective strategies for onboarding customers?",
+      "agents": [
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:21.385212",
+      "synthetic": true
+    },
+    {
+      "query": "How would you outline a complete go-to-market strategy?",
+      "agents": [
+        "leadgen",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:29.062570",
+      "synthetic": true
+    },
+    {
+      "query": "What\u2019s our current customer acquisition cost?",
+      "agents": [
+        "financial"
+      ],
+      "timestamp": "2025-11-06T21:06:31.131231",
+      "synthetic": true
+    },
+    {
+      "query": "How can we improve unit economics?",
+      "agents": [
+        "financial",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:22.719127",
+      "synthetic": true
+    },
+    {
+      "query": "How do we reduce support ticket volume?",
+      "agents": [
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:23.544782",
+      "synthetic": true
+    },
+    {
+      "query": "Who are the main competitors in e-commerce?",
+      "agents": [
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:12.687763",
+      "synthetic": true
+    },
+    {
+      "query": "Which customer segment should we focus on for the launch?",
+      "agents": [
+        "leadgen",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:07:10.212755",
+      "synthetic": true
+    },
+    {
+      "query": "Who is our ideal audience for this product launch?",
+      "agents": [
+        "leadgen",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:07:10.212754",
+      "synthetic": true
+    },
+    {
+      "query": "What's the market size for B2B SaaS?",
+      "agents": [
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:09.393321",
+      "synthetic": true
+    },
+    {
+      "query": "How can we reduce operational costs?",
+      "agents": [
+        "financial",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:58.680008",
+      "synthetic": true
+    },
+    {
+      "query": "Who are we aiming to reach with our product launch?",
+      "agents": [
+        "leadgen",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:07:10.212757",
+      "synthetic": true
+    },
+    {
+      "query": "What methods should we employ to acquire customers quickly and retain them over the long term?",
+      "agents": [
+        "leadgen",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:33.104388",
+      "synthetic": true
+    },
+    {
+      "query": "What\u2019s the total addressable market for B2B SaaS products?",
+      "agents": [
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:09.393335",
+      "synthetic": true
+    },
+    {
+      "query": "What customer types should we concentrate our efforts on?",
+      "agents": [
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:15.135366",
+      "synthetic": true
+    },
+    {
+      "query": "Which messages resonate with our target audience?",
+      "agents": [
+        "leadgen",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:07:15.038027",
+      "synthetic": true
+    },
+    {
+      "query": "What's the best growth strategy for our startup?",
+      "agents": [
+        "financial",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:20.926468",
+      "synthetic": true
+    },
+    {
+      "query": "Should we raise prices for our premium tier?",
+      "agents": [
+        "financial",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:51.606826",
+      "synthetic": true
+    },
+    {
+      "query": "How do we increase the number of qualified prospects for our sales funnel?",
+      "agents": [
+        "leadgen"
+      ],
+      "timestamp": "2025-11-06T21:06:33.352554",
+      "synthetic": true
+    },
+    {
+      "query": "Who should we prioritize in our launch marketing outreach?",
+      "agents": [
+        "leadgen",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:07:10.212758",
+      "synthetic": true
+    },
+    {
+      "query": "How might we lower our day-to-day operating costs?",
+      "agents": [
+        "financial",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:58.680022",
+      "synthetic": true
+    }
+  ],
+  "val": [
+    {
+      "query": "How might we increase the rate at which customers stay loyal to our brand?",
+      "agents": [
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:41.801036",
+      "synthetic": true
+    },
+    {
+      "query": "How can we maximize the revenue we earn from each customer?",
+      "agents": [
+        "financial",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:56.877030",
+      "synthetic": true
+    },
+    {
+      "query": "What changes would improve our unit economics?",
+      "agents": [
+        "financial",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:22.719145",
+      "synthetic": true
+    },
+    {
+      "query": "Which firms dominate the e-commerce sector?",
+      "agents": [
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:12.687778",
+      "synthetic": true
+    },
+    {
+      "query": "What approach should we take to win enterprise business?",
+      "agents": [
+        "leadgen",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:07:13.037614",
+      "synthetic": true
+    },
+    {
+      "query": "How can we improve customer retention?",
+      "agents": [
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:41.801025",
+      "synthetic": true
+    },
+    {
+      "query": "How can we optimize our fulfillment process?",
+      "agents": [
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:18.470546",
+      "synthetic": true
+    },
+    {
+      "query": "What steps can we take to strengthen our unit economics?",
+      "agents": [
+        "financial",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:22.719140",
+      "synthetic": true
+    },
+    {
+      "query": "How do we cut down on incoming support tickets?",
+      "agents": [
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:23.544800",
+      "synthetic": true
+    },
+    {
+      "query": "Where should we focus to optimize our order fulfillment operations?",
+      "agents": [
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:18.470566",
+      "synthetic": true
+    },
+    {
+      "query": "How do we build a sales engine for our product?",
+      "agents": [
+        "leadgen",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:26.079723",
+      "synthetic": true
+    },
+    {
+      "query": "How do we reach enterprise customers?",
+      "agents": [
+        "leadgen",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:07:13.037602",
+      "synthetic": true
+    },
+    {
+      "query": "What strategies should we use to connect with enterprise clients?",
+      "agents": [
+        "leadgen",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:07:13.037611",
+      "synthetic": true
+    },
+    {
+      "query": "What is the most effective growth plan for our startup?",
+      "agents": [
+        "financial",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:20.926478",
+      "synthetic": true
+    },
+    {
+      "query": "What\u2019s the break-even horizon for implementing this automation?",
+      "agents": [
+        "financial",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:02.341191",
+      "synthetic": true
+    },
+    {
+      "query": "What steps can we take to generate more qualified leads?",
+      "agents": [
+        "leadgen"
+      ],
+      "timestamp": "2025-11-06T21:06:33.352555",
+      "synthetic": true
+    },
+    {
+      "query": "How can we better retain our existing customers over time?",
+      "agents": [
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:41.801039",
+      "synthetic": true
+    },
+    {
+      "query": "How should I structure a successful cold email outreach plan?",
+      "agents": [
+        "leadgen"
+      ],
+      "timestamp": "2025-11-06T21:06:35.655632",
+      "synthetic": true
+    },
+    {
+      "query": "Where can we optimize our operations to decrease costs?",
+      "agents": [
+        "financial",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:58.680028",
+      "synthetic": true
+    },
+    {
+      "query": "What should we do to develop a scalable sales system for our product?",
+      "agents": [
+        "leadgen",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:26.079734",
+      "synthetic": true
+    },
+    {
+      "query": "Where should we focus to drive better unit-level economics?",
+      "agents": [
+        "financial",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:22.719148",
+      "synthetic": true
+    },
+    {
+      "query": "How should we price our new feature?",
+      "agents": [
+        "financial"
+      ],
+      "timestamp": "2025-11-06T21:06:28.092009",
+      "synthetic": true
+    }
+  ],
+  "test": [
+    {
+      "query": "What strategies should we pursue to broaden our market reach into new segments?",
+      "agents": [
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:48.946792",
+      "synthetic": true
+    },
+    {
+      "query": "What's the market opportunity for our new product?",
+      "agents": [
+        "financial",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:54.945139",
+      "synthetic": true
+    },
+    {
+      "query": "How many months (or years) until this automation recoups its cost?",
+      "agents": [
+        "financial",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:02.341193",
+      "synthetic": true
+    },
+    {
+      "query": "Who should we target for our product launch?",
+      "agents": [
+        "leadgen",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:07:10.212744",
+      "synthetic": true
+    },
+    {
+      "query": "Can you describe an end-to-end go-to-market strategy?",
+      "agents": [
+        "leadgen",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:29.062575",
+      "synthetic": true
+    },
+    {
+      "query": "What steps can we take to boost our funnel\u2019s conversion rate?",
+      "agents": [
+        "leadgen"
+      ],
+      "timestamp": "2025-11-06T21:06:39.083084",
+      "synthetic": true
+    },
+    {
+      "query": "What\u2019s the expected time to recoup the investment in this automation?",
+      "agents": [
+        "financial",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:02.341194",
+      "synthetic": true
+    },
+    {
+      "query": "What strategies can we use to attract new customers and keep them coming back efficiently?",
+      "agents": [
+        "leadgen",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:33.104385",
+      "synthetic": true
+    },
+    {
+      "query": "What strategies will raise the average revenue per customer?",
+      "agents": [
+        "financial",
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:56.877035",
+      "synthetic": true
+    },
+    {
+      "query": "Which companies are the main rivals in online retail?",
+      "agents": [
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:12.687774",
+      "synthetic": true
+    },
+    {
+      "query": "How can we lessen ticket volume in our support queue?",
+      "agents": [
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:23.544796",
+      "synthetic": true
+    },
+    {
+      "query": "How do we efficiently onboard new customers and maintain their loyalty?",
+      "agents": [
+        "leadgen",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:33.104390",
+      "synthetic": true
+    },
+    {
+      "query": "Who are the leading players in the e-commerce space?",
+      "agents": [
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:12.687773",
+      "synthetic": true
+    },
+    {
+      "query": "Why are customers churning from our service?",
+      "agents": [
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:06:45.527227",
+      "synthetic": true
+    },
+    {
+      "query": "Is outsourcing customer support the right move for us?",
+      "agents": [
+        "financial",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:07.024545",
+      "synthetic": true
+    },
+    {
+      "query": "How expensive is it for us to win a new customer?",
+      "agents": [
+        "financial"
+      ],
+      "timestamp": "2025-11-06T21:06:31.131230",
+      "synthetic": true
+    },
+    {
+      "query": "What pricing approach makes sense for our new feature?",
+      "agents": [
+        "financial"
+      ],
+      "timestamp": "2025-11-06T21:06:28.092027",
+      "synthetic": true
+    },
+    {
+      "query": "How can we generate more qualified leads?",
+      "agents": [
+        "leadgen"
+      ],
+      "timestamp": "2025-11-06T21:06:33.352543",
+      "synthetic": true
+    },
+    {
+      "query": "What is the most effective outreach approach for cold email campaigns?",
+      "agents": [
+        "leadgen"
+      ],
+      "timestamp": "2025-11-06T21:06:35.655629",
+      "synthetic": true
+    },
+    {
+      "query": "What was the financial return from this marketing effort?",
+      "agents": [
+        "financial"
+      ],
+      "timestamp": "2025-11-06T21:06:25.615776",
+      "synthetic": true
+    },
+    {
+      "query": "Which customer groups should we focus on?",
+      "agents": [
+        "market"
+      ],
+      "timestamp": "2025-11-06T21:06:15.135361",
+      "synthetic": true
+    },
+    {
+      "query": "How do we acquire and retain customers efficiently?",
+      "agents": [
+        "leadgen",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:33.104375",
+      "synthetic": true
+    },
+    {
+      "query": "What constitutes a full-fledged go-to-market approach?",
+      "agents": [
+        "leadgen",
+        "market",
+        "operations"
+      ],
+      "timestamp": "2025-11-06T21:07:29.062572",
+      "synthetic": true
+    }
+  ]
+}

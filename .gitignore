@@ -54,3 +54,30 @@ eval/results_*.json
 models/*.pkl
 models/*.pt
 models/*.h5
+
+# ML / training artifacts
+checkpoints/
+**/checkpoint-*/  # sentence-transformers runs
+*.safetensors
+*.pt
+*.bin
+trainer_state.json
+
+# Models (large)
+models/*.pkl
+models/*.pt
+models/*.h5
+models/*.bin
+
+# Python tooling caches
+.mypy_cache/
+.pytype/
+.ipynb_checkpoints/
+
+# Local data/runtime
+research_cache/
+eval/results_*.json
+
+# OS / editor (extra safety)
+Thumbs.db
+*.tmp

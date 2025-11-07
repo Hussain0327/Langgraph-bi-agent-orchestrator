@@ -434,3 +434,111 @@ python cli.py
 **Excellent work on Phase 2! The RAG integration is production-ready.** 🎉
 
 Last Updated: November 5, 2025
+ere is Claude's plan:
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌Revised Phase 2 Plan: ML Routing First → Evaluation → Complete Testing
+
+ PHASE 1: ML ROUTING IMPLEMENTATION (Days 1-3, ~12-14 hours)
+
+ Day 1: Export Training Data (4-5 hours)
+ - Create scripts/export_langsmith_data.py
+ - Export all LangSmith traces with routing decisions
+ - Fallback Plan: Generate 200+ synthetic queries if insufficient traces
+ - Prepare train/val/test split (70/15/15)
+ - Output: models/training_data.json
+
+ Day 2: Train ML Classifier (4-5 hours)
+ - Create src/ml/routing_classifier.py using SetFit
+ - Train multi-label classifier (4 binary classifiers, one per agent)
+ - Target metrics: >85% accuracy, <50ms inference, F1 >0.90
+ - Save model: models/routing_classifier.pkl
+ - Create model card documenting performance
+
+ Day 3: Integration & Benchmarking (3-4 hours)
+ - Integrate ML classifier into src/langgraph_orchestrator.py
+ - Add use_ml_routing=True/False toggle parameter
+ - Create eval/routing_comparison.py to benchmark ML vs GPT-5
+ - Validate backward compatibility (all tests still pass)
+
+ ---
+ PHASE 2: EVALUATION FRAMEWORK (Days 4-5, ~7-9 hours)
+
+ Day 4: Statistical Analysis Module (4-5 hours)
+ - Create eval/analysis.py with comprehensive stats functions
+ - Implement: t-tests, Cohen's d, effect sizes, significance testing
+ - Build cost-benefit analysis, citation correlation analysis
+ - Create comparison report generator (markdown output)
+
+ Day 5: A/B Testing Framework (3-4 hours)
+ - Create src/ab_testing.py with ABTestManager class
+ - Features: deterministic user assignment, metrics tracking, significance testing
+ - Enable comparing: RAG vs baseline, ML routing vs GPT-5
+ - Validation: test with sample data
+
+ ---
+ PHASE 3: COMPLETE TESTING & VALIDATION (Days 6-7, ~8-10 hours)
+
+ Day 6: Comprehensive Evaluation Run (4-5 hours)
+ - Run full 25-query evaluation with ALL configurations:
+   - Baseline (no RAG, GPT-5 routing)
+   - RAG only (RAG enabled, GPT-5 routing)
+   - ML routing only (no RAG, ML routing)
+   - Full system (RAG + ML routing)
+ - Collect metrics: quality, latency, cost, citations, routing accuracy
+ - Manual verification: test 3-5 queries via CLI for citation quality
+
+ Day 7: Analysis & Documentation (4-5 hours)
+ - Run statistical analysis on all evaluation results
+ - Generate comprehensive eval/EVALUATION_REPORT.md (10+ pages)
+ - Create docs/WEEK2_COMPLETE.md summary
+ - Update all docs: README.md, claude.md, phase2.md
+ - Mark Week 1 & Week 2 both 100% complete
+
+ ---
+ DELIVERABLES
+
+ Code Files (4 new modules):
+ - scripts/export_langsmith_data.py - LangSmith trace export
+ - src/ml/routing_classifier.py - SetFit ML classifier
+ - eval/analysis.py - Statistical analysis suite
+ - src/ab_testing.py - A/B testing framework
+
+ Model Files:
+ - models/training_data.json - Training dataset (200+ examples)
+ - models/routing_classifier.pkl - Trained model
+ - models/model_card.md - Model documentation
+
+ Evaluation Results:
+ - eval/results_baseline_*.json - No RAG, GPT-5 routing
+ - eval/results_rag_*.json - RAG, GPT-5 routing
+ - eval/results_ml_*.json - No RAG, ML routing
+ - eval/results_full_*.json - RAG + ML routing
+
+ Documentation (4 files):
+ - eval/EVALUATION_REPORT.md - Comprehensive analysis
+ - docs/WEEK2_COMPLETE.md - Week 2 summary
+ - models/model_card.md - ML classifier specs
+ - Updated README.md, claude.md, phase2.md
+
+ ---
+ SUCCESS METRICS
+
+ ML Routing (Phase 1):
+ - ✓ ML classifier accuracy ≥85%
+ - ✓ Inference latency <50ms
+ - ✓ Per-agent F1 score >0.90
+ - ✓ Integrated without breaking existing tests
+
+ Evaluation Framework (Phase 2):
+ - ✓ Statistical analysis module operational
+ - ✓ A/B testing framework functional
+ - ✓ Can compare multiple system configurations
+
+ Complete System (Phase 3):
+ - ✓ All 4 configurations tested (25 queries each = 100 total)
+ - ✓ RAG quality improvement validated (+15-18%, p <0.05)
+ - ✓ ML routing accuracy ≥ GPT-5 routing
+ - ✓ Citation rate >60%
+ - ✓ Comprehensive evaluation report published
+ - ✓ Week 1 + Week 2 both marked 100% complete
+
+ Timeline: 7 days, 27-33 total hours

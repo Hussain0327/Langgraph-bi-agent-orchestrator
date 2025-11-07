@@ -41,15 +41,17 @@ class LangGraphOrchestrator:
         User Query → Router Node → Parallel Agent Execution → Synthesis Node → Result
     """
 
-    def __init__(self, enable_rag: bool = True):
+    def __init__(self, enable_rag: bool = True, use_ml_routing: bool = False):
         """
         Initialize the LangGraph Orchestrator.
 
         Args:
             enable_rag: Enable research-augmented generation (default: True)
+            use_ml_routing: Use ML classifier for routing instead of GPT-5 (default: False)
         """
         self.gpt5 = GPT5Wrapper()
         self.enable_rag = enable_rag
+        self.use_ml_routing = use_ml_routing
 
         # Initialize agents
         self.market_agent = MarketAnalysisAgent()
@@ -64,6 +66,26 @@ class LangGraphOrchestrator:
         else:
             self.research_agent = None
             print("⚠️  RAG disabled - Running without research augmentation")
+
+        # Initialize ML routing classifier (if enabled)
+        self.ml_router = None
+        if self.use_ml_routing:
+            try:
+                import os
+                if os.path.exists("models/routing_classifier.pkl"):
+                    from src.ml.routing_classifier import RoutingClassifier
+                    self.ml_router = RoutingClassifier()
+                    self.ml_router.load("models/routing_classifier.pkl")
+                    print("✓ ML routing enabled - Classifier loaded")
+                else:
+                    print("⚠️  ML routing requested but model not found. Using GPT-5 routing.")
+                    self.use_ml_routing = False
+            except Exception as e:
+                print(f"⚠️  ML routing failed to load: {e}. Using GPT-5 routing.")
+                self.use_ml_routing = False
+
+        if not self.use_ml_routing:
+            print("✓ Using GPT-5 semantic routing")
 
         # Initialize tools
         self.web_research = WebResearchTool()
@@ -120,9 +142,25 @@ class LangGraphOrchestrator:
         """
         Router node: Determines which agents to call based on query analysis.
 
-        Uses GPT-5 for semantic routing instead of keyword matching.
+        Uses ML classifier (if enabled) or GPT-5 for semantic routing.
         """
         query = state["query"]
+
+        # Use ML routing if enabled
+        if self.use_ml_routing and self.ml_router:
+            try:
+                agents_to_call = self.ml_router.predict(query)
+                probas = self.ml_router.predict_proba(query)
+
+                print(f"🤖 ML Router: {agents_to_call}")
+                print(f"   Confidence: {probas}")
+
+                state["agents_to_call"] = agents_to_call
+                return state
+
+            except Exception as e:
+                print(f"⚠️  ML routing failed: {e}, falling back to GPT-5")
+                # Fall through to GPT-5 routing
 
         # Use GPT-5 to analyze which agents are needed
         routing_prompt = f"""Analyze the following business query and determine which specialized agents should be consulted.
@@ -156,6 +194,8 @@ Only output the JSON array, nothing else."""
             # If no agents selected, use all for comprehensive analysis
             if not agents_to_call:
                 agents_to_call = ["market", "operations", "financial", "leadgen"]
+
+            print(f"🧠 GPT-5 Router: {agents_to_call}")
 
         except Exception as e:
             print(f"Routing error: {e}, using all agents")
