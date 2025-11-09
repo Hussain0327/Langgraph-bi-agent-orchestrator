@@ -1,16 +1,3 @@
-"""
-Statistical Analysis Module for Evaluation Results
-
-Provides comprehensive statistical analysis comparing RAG vs non-RAG performance:
-- T-tests for statistical significance
-- Effect sizes (Cohen's d)
-- Cost-benefit analysis
-- Citation correlation analysis
-
-Usage:
-    python eval/analysis.py --baseline results_no_rag.json --treatment results_rag.json
-"""
-
 import argparse
 import json
 import os
@@ -21,16 +8,9 @@ from scipy import stats
 
 
 class StatisticalAnalyzer:
-    """Analyze and compare evaluation results with statistical rigor."""
 
     def __init__(self, baseline_results: Dict[str, Any], treatment_results: Dict[str, Any]):
-        """
-        Initialize analyzer with baseline and treatment results.
 
-        Args:
-            baseline_results: Results from baseline system (no RAG)
-            treatment_results: Results from treatment system (with RAG)
-        """
         self.baseline = baseline_results
         self.treatment = treatment_results
 
@@ -42,15 +22,7 @@ class StatisticalAnalyzer:
         print(f"Treatment: {len(self.treatment.get('results', []))} queries")
 
     def extract_metrics(self, results: Dict[str, Any]) -> Dict[str, List[float]]:
-        """
-        Extract metric arrays from results.
-
-        Args:
-            results: Evaluation results
-
-        Returns:
-            Dictionary mapping metric names to value lists
-        """
+        
         metrics = {
             "factuality": [],
             "helpfulness": [],
@@ -83,16 +55,7 @@ class StatisticalAnalyzer:
         return metrics
 
     def calculate_ttest(self, baseline_values: List[float], treatment_values: List[float]) -> Tuple[float, float]:
-        """
-        Calculate two-sample t-test.
 
-        Args:
-            baseline_values: Baseline metric values
-            treatment_values: Treatment metric values
-
-        Returns:
-            Tuple of (t-statistic, p-value)
-        """
         if not baseline_values or not treatment_values:
             return 0.0, 1.0
 
@@ -100,16 +63,7 @@ class StatisticalAnalyzer:
         return float(t_stat), float(p_value)
 
     def calculate_effect_size(self, baseline_values: List[float], treatment_values: List[float]) -> float:
-        """
-        Calculate Cohen's d effect size.
 
-        Args:
-            baseline_values: Baseline metric values
-            treatment_values: Treatment metric values
-
-        Returns:
-            Cohen's d value
-        """
         if not baseline_values or not treatment_values:
             return 0.0
 
@@ -130,15 +84,7 @@ class StatisticalAnalyzer:
         return float(cohens_d)
 
     def interpret_effect_size(self, d: float) -> str:
-        """
-        Interpret Cohen's d effect size.
 
-        Args:
-            d: Cohen's d value
-
-        Returns:
-            Interpretation string
-        """
         abs_d = abs(d)
         if abs_d < 0.2:
             return "negligible"
@@ -154,16 +100,7 @@ class StatisticalAnalyzer:
         baseline_metrics: Dict[str, List[float]],
         treatment_metrics: Dict[str, List[float]]
     ) -> Dict[str, Any]:
-        """
-        Analyze cost vs quality trade-off.
 
-        Args:
-            baseline_metrics: Baseline metric arrays
-            treatment_metrics: Treatment metric arrays
-
-        Returns:
-            Cost-benefit analysis results
-        """
         # Calculate average quality (mean of factuality, helpfulness, comprehensiveness)
         baseline_quality = np.mean([
             np.mean(baseline_metrics["factuality"]),
@@ -209,15 +146,7 @@ class StatisticalAnalyzer:
         }
 
     def citation_correlation(self, treatment_metrics: Dict[str, List[float]]) -> Dict[str, Any]:
-        """
-        Analyze correlation between citations and quality.
 
-        Args:
-            treatment_metrics: Treatment metric arrays (with citations)
-
-        Returns:
-            Citation correlation analysis
-        """
         citations = treatment_metrics["citation_count"]
 
         if not citations or all(c == 0 for c in citations):
@@ -247,13 +176,8 @@ class StatisticalAnalyzer:
         }
 
     def analyze(self) -> Dict[str, Any]:
-        """
-        Run complete statistical analysis.
 
-        Returns:
-            Comprehensive analysis results
-        """
-        print(f"\n📈 Running statistical analysis...")
+        print(f"\nRunning statistical analysis...")
 
         # Extract metrics
         baseline_metrics = self.extract_metrics(self.baseline)
@@ -320,15 +244,7 @@ class StatisticalAnalyzer:
         return results
 
     def generate_report(self, results: Dict[str, Any]) -> str:
-        """
-        Generate markdown report from analysis results.
 
-        Args:
-            results: Analysis results
-
-        Returns:
-            Markdown report string
-        """
         report = f"""# Statistical Analysis Report
 
 **Generated:** {results['timestamp']}

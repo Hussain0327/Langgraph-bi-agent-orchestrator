@@ -2,10 +2,11 @@
 
 **A production-ready multi-agent business intelligence system with Research-Augmented Generation (RAG), LangGraph orchestration, and GPT-5 integration.**
 
-[![Phase](https://img.shields.io/badge/Phase-2%20Week%202-blue)]()
-[![Status](https://img.shields.io/badge/Status-Active%20Development-green)]()
+[![Phase](https://img.shields.io/badge/Phase-2%20Week%203-darkred)]()
+[![Status](https://img.shields.io/badge/Status-Active%20Development-darkestgreen)]()
 [![GPT-5](https://img.shields.io/badge/GPT--5-nano-orange)]()
-[![LangGraph](https://img.shields.io/badge/LangGraph-Orchestration-purple)]()
+[![DeepSeek](https://img.shields.io/badge/DeepSeek-v3.2--Exp-purple)]()
+[![LangGraph](https://img.shields.io/badge/LangGraph-Orchestration-darkgreen)]()
 
 ---
 

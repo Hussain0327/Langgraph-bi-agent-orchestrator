@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-"""CLI interface for the Business Intelligence Orchestrator v2."""
 import os
 import sys
 from dotenv import load_dotenv
@@ -16,7 +15,7 @@ init(autoreset=True)
 
 
 def print_banner():
-    """Print the application banner."""
+    """Need to change this to DeepSeek models."""
     gpt5_status = "✓ GPT-5" if Config.is_gpt5() else f"GPT-4"
     langsmith_status = "✓ LangSmith ON" if Config.LANGCHAIN_TRACING_V2 else "LangSmith OFF"
 

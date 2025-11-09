@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-"""Debug test to inspect full response structure."""
 
 from src.config import Config
 from openai import OpenAI
@@ -41,3 +40,5 @@ for i, item in enumerate(response.output):
 
 print("\n=== FULL RESPONSE ===")
 print(response)
+print("\n=== RESPONSE AS DICT ===")
+print(json.dumps(response.to_dict(), indent=2))

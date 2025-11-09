@@ -1,9 +1,4 @@
-"""
-Evaluation Framework for Business Intelligence Orchestrator
 
-Evaluates system performance across quality, cost, and latency metrics.
-Uses LLM-as-judge for quality assessment.
-"""
 
 import json
 import time
@@ -22,17 +17,6 @@ from src.config import Config
 
 
 class BenchmarkRunner:
-    """
-    Runs benchmark evaluations on the orchestrator.
-
-    Measures:
-    - Latency (seconds)
-    - Cost (USD)
-    - Token usage
-    - Citation count
-    - Quality scores (via LLM-as-judge)
-    - Routing accuracy
-    """
 
     def __init__(
         self,
@@ -40,14 +24,7 @@ class BenchmarkRunner:
         use_ml_routing: bool = False,
         output_dir: str = "./eval"
     ):
-        """
-        Initialize benchmark runner.
 
-        Args:
-            enable_rag: Enable RAG mode
-            use_ml_routing: Use ML routing (if available)
-            output_dir: Directory for results
-        """
         self.enable_rag = enable_rag
         self.use_ml_routing = use_ml_routing
         self.output_dir = Path(output_dir)
@@ -76,15 +53,7 @@ class BenchmarkRunner:
         self,
         query_data: Dict[str, Any]
     ) -> Dict[str, Any]:
-        """
-        Run a single query and collect metrics.
-
-        Args:
-            query_data: Query dict with id, query, expected_agents, etc.
-
-        Returns:
-            Dict with all metrics
-        """
+        
         query_id = query_data['id']
         query_text = query_data['query']
         expected_agents = query_data.get('expected_agents', [])
