@@ -1,5 +1,6 @@
 import asyncio
 from typing import Dict, Any, List, TypedDict, Optional
+from concurrent.futures import ThreadPoolExecutor
 from langgraph.graph import StateGraph, END
 from langsmith import traceable
 
@@ -28,6 +29,18 @@ class AgentState(TypedDict):
     synthesis: str
     conversation_history: List[Dict[str, str]]
     use_memory: bool
+
+
+def _run_async_in_sync_context(coro):
+    try:
+        loop = asyncio.get_running_loop()
+    except RuntimeError:
+        return asyncio.run(coro)
+
+    import concurrent.futures
+    with concurrent.futures.ThreadPoolExecutor() as pool:
+        future = pool.submit(asyncio.run, coro)
+        return future.result()
 
 
 class LangGraphOrchestrator:
@@ -212,7 +225,7 @@ Only output the JSON array, nothing else."""
 
         print(f"\nExecuting {len(agents_to_call)} agents in parallel...")
 
-        results = asyncio.run(self._execute_agents_parallel(state))
+        results = _run_async_in_sync_context(self._execute_agents_parallel(state))
 
         state["market_analysis"] = results.get("market_analysis", "")
         state["operations_audit"] = results.get("operations_audit", "")
