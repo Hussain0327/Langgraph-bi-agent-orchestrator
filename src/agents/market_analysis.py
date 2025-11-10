@@ -1,10 +1,9 @@
-"""Market Analysis Agent - specializes in market research and competitive analysis."""
-from typing import Dict, Any
+from typing import Dict, Any, Optional
+import asyncio
 from src.unified_llm import UnifiedLLM
 
 
 class MarketAnalysisAgent:
-    """Specialized agent for market analysis, competitive research, industry trends."""
 
     def __init__(self):
         self.llm = UnifiedLLM(agent_type="market")
@@ -35,11 +34,11 @@ When analyzing markets, provide:
 
 Always base your analysis on data and provide actionable insights."""
 
-    def analyze(
+    async def analyze(
         self,
         query: str,
-        web_research_results: Dict[str, Any] = None,
-        research_context: str = None
+        web_research_results: Optional[Dict[str, Any]] = None,
+        research_context: Optional[str] = None
     ) -> str:
         """Conduct comprehensive market analysis.
 
@@ -74,10 +73,11 @@ Always base your analysis on data and provide actionable insights."""
             user_prompt += "\n- Example: 'SaaS churn averages 5-7% monthly (Source: Smith et al., 2024).'"
 
         try:
-            return self.llm.generate(
+            return await asyncio.to_thread(
+                self.llm.generate,
                 input_text=user_prompt,
                 instructions=self.system_prompt,
-                reasoning_effort="low",  # Fixed: "medium" uses all tokens for reasoning, no output
+                reasoning_effort="low",
                 text_verbosity="high",
                 max_tokens=1500
             )

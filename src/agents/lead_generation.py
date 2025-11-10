@@ -1,10 +1,9 @@
-"""Lead Generation Agent - specializes in customer acquisition and growth strategies."""
-from typing import Dict, Any
+from typing import Optional
+import asyncio
 from src.unified_llm import UnifiedLLM
 
 
 class LeadGenerationAgent:
-    """Specialized agent for lead generation and customer acquisition strategies."""
 
     def __init__(self):
         self.llm = UnifiedLLM(agent_type="leadgen")
@@ -40,7 +39,7 @@ When developing lead generation strategies, provide:
 
 Focus on practical, cost-effective strategies that drive predictable growth."""
 
-    def generate_strategy(self, query: str, research_context: str = None) -> str:
+    async def generate_strategy(self, query: str, research_context: Optional[str] = None) -> str:
         """Develop comprehensive lead generation strategies.
 
         Args:
@@ -77,10 +76,11 @@ Focus on scalable, cost-effective customer acquisition methods."""
             user_prompt += "\n- Include a 'References' section at the end with full citations"
 
         try:
-            return self.llm.generate(
+            return await asyncio.to_thread(
+                self.llm.generate,
                 input_text=user_prompt,
                 instructions=self.system_prompt,
-                reasoning_effort="low",  # Fixed: "medium" uses all tokens for reasoning, no output
+                reasoning_effort="low",
                 text_verbosity="high",
                 max_tokens=1500
             )

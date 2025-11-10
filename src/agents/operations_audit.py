@@ -1,10 +1,9 @@
-"""Operations Audit Agent - specializes in process optimization and operational efficiency."""
-from typing import Dict, Any
+from typing import Optional
+import asyncio
 from src.unified_llm import UnifiedLLM
 
 
 class OperationsAuditAgent:
-    """Specialized agent for operations audit and process optimization."""
 
     def __init__(self):
         self.llm = UnifiedLLM(agent_type="operations")
@@ -36,7 +35,7 @@ When auditing operations, provide:
 
 Focus on practical, actionable improvements that drive efficiency and scalability."""
 
-    def audit(self, query: str, research_context: str = None) -> str:
+    async def audit(self, query: str, research_context: Optional[str] = None) -> str:
         """Perform comprehensive operations audit.
 
         Args:
@@ -71,10 +70,11 @@ Provide specific, actionable recommendations with implementation priorities."""
             user_prompt += "\n- Include a 'References' section at the end with full citations"
 
         try:
-            return self.llm.generate(
+            return await asyncio.to_thread(
+                self.llm.generate,
                 input_text=user_prompt,
                 instructions=self.system_prompt,
-                reasoning_effort="low",  # Fixed: "medium" uses all tokens for reasoning, no output
+                reasoning_effort="low",
                 text_verbosity="high",
                 max_tokens=1500
             )

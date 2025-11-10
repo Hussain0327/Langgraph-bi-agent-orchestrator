@@ -1,10 +1,9 @@
-"""Financial Modeling Agent - specializes in financial analysis and projections."""
-from typing import Dict, Any
+from typing import Dict, Any, Optional
+import asyncio
 from src.unified_llm import UnifiedLLM
 
 
 class FinancialModelingAgent:
-    """Specialized agent for financial modeling and analysis."""
 
     def __init__(self):
         self.llm = UnifiedLLM(agent_type="financial")
@@ -38,11 +37,11 @@ When creating financial models, provide:
 
 Use the calculator tool for precise financial calculations. Present findings with clear metrics and actionable financial guidance."""
 
-    def model_financials(
+    async def model_financials(
         self,
         query: str,
-        calculator_results: Dict[str, Any] = None,
-        research_context: str = None
+        calculator_results: Optional[Dict[str, Any]] = None,
+        research_context: Optional[str] = None
     ) -> str:
         """Create detailed financial models and analysis.
 
@@ -83,10 +82,11 @@ Use specific numbers and financial metrics where possible."""
             user_prompt += "\n- Include a 'References' section at the end with full citations"
 
         try:
-            return self.llm.generate(
+            return await asyncio.to_thread(
+                self.llm.generate,
                 input_text=user_prompt,
                 instructions=self.system_prompt,
-                reasoning_effort="low",  # Fixed: "medium" uses all tokens for reasoning, no output
+                reasoning_effort="low",
                 text_verbosity="high",
                 max_tokens=1500
             )
