@@ -2,8 +2,8 @@
 
 A self-hosted multi-agent business intelligence system with automated document generation, research augmentation, and intelligent query routing. Generates professional PowerPoint presentations and Excel workbooks from natural language business questions.
 
-**Author**: [Your Name]
-**Status**: Production-Ready (Phase 3 Complete)
+**Author**: Raja Hussain
+**Status**: Production-Ready
 **Last Updated**: November 17, 2025
 
 ---
