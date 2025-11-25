@@ -53,8 +53,8 @@ This system coordinates multiple specialized AI agents to provide comprehensive 
 
 ```bash
 # Clone repository
-git clone <your-repo-url>
-cd multi_agent_workflow
+git clone https://github.com/Hussain0327/Business-Intelligence-Orchestrator.git
+cd Business-Intelligence-Orchestrator
 
 # Configure environment
 cp .env.example .env
