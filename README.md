@@ -1,10 +1,27 @@
 # Business Intelligence Orchestrator
 
-A self-hosted multi-agent business intelligence system with automated document generation, research augmentation, and intelligent query routing. Generates professional PowerPoint presentations and Excel workbooks from natural language business questions.
+![Python](https://img.shields.io/badge/python-3.12+-blue)
+![LangGraph](https://img.shields.io/badge/LangGraph-multi--agent-purple)
+![ML](https://img.shields.io/badge/ML-routing%20classifier-red)
+![Cost Savings](https://img.shields.io/badge/cost%20savings-86%25-success)
+![Speedup](https://img.shields.io/badge/speedup-2.1x%20parallel-orange)
+![AutoGen](https://img.shields.io/badge/automation-PPT%20%2B%20Excel-teal)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-**Author**: Raja Hussain
-**Status**: Production-Ready
-**Last Updated**: November 16, 2025
+**Author**: Raja Hussain  
+**Built with**: Python, LangGraph, FastAPI, Docker, DeepSeek, GPT-5  
+**Status**: MVP-Ready  
+**Last Updated**: December 6, 2025
+
+---
+
+## TLDR
+
+- Coordinates 5 specialized AI agents with LangGraph to answer business questions
+- Retrieves academic papers from Semantic Scholar and arXiv with proper citations
+- Routes queries between DeepSeek and GPT-5 to cut costs by 86%
+- Auto-generates PowerPoint decks and Excel workbooks from single queries
+- 2.1x speedup with parallel execution, 138x speedup on cache hits
 
 ---
 
@@ -12,7 +29,6 @@ A self-hosted multi-agent business intelligence system with automated document g
 
 - [Overview](#overview)
 - [Quick Start](#quick-start)
-- [Documentation](#documentation)
 - [System Architecture](#system-architecture)
 - [Key Features](#key-features)
 - [Performance Metrics](#performance-metrics)
@@ -44,6 +60,19 @@ This system coordinates multiple specialized AI agents to provide comprehensive 
 - **Hybrid LLM Strategy** - 90% cost savings using DeepSeek + GPT-5 fallback
 - **Intelligent Caching** - 60-138x speedup on repeated queries with Redis
 - **One-Command Deployment** - Docker Compose for easy self-hosting
+
+This project is built to be deployable: Docker Compose, Redis caching, cost optimization, and benchmarking are all implemented. Authentication, rate limiting, and production monitoring are planned but not yet built.
+
+---
+
+## Skills Demonstrated
+
+- Multi-agent orchestration with LangGraph and Python asyncio
+- Research augmentation with academic papers, vector search, and caching
+- Cost optimization using hybrid LLM routing and fallback strategies
+- Document automation for PowerPoint and Excel generation
+- Performance benchmarking for speed, cost, and routing accuracy
+- Deployment with Docker and Redis caching
 
 ---
 
@@ -89,7 +118,6 @@ uvicorn src.main:app --reload
 - DeepSeek API key (optional, for cost savings)
 - LangSmith API key (optional, for tracing)
 
-
 ---
 
 ## System Architecture
@@ -105,6 +133,8 @@ Query Classifier (simple/business/complex)
 ├─ BUSINESS → Agent Router → 4 Parallel Agents → Synthesis
 └─ COMPLEX → Research Retrieval → Agent Router → 4 Parallel Agents → Synthesis
 ```
+
+![System Architecture](docs/screenshots/system_architecture.png)
 
 ### Specialized Agents
 
@@ -122,7 +152,10 @@ Query Classifier (simple/business/complex)
 
 Automatically generates professional deliverables from business queries:
 
+![Deliverables Overview](docs/screenshots/deliverables_overview.png)
+
 **PowerPoint Presentation** (10-12 slides):
+
 - Title slide with branding
 - Executive summary
 - Context and methodology
@@ -132,16 +165,23 @@ Automatically generates professional deliverables from business queries:
 - Next steps and appendix
 
 **Excel Workbook** (5 sheets):
+
 - Executive Summary: KPI dashboard
 - Raw Data: Complete analysis output
 - Calculations: Formulas with Base/Upside/Downside scenarios
 - Charts & Visuals: Data visualizations
 - Assumptions & Sources: Methodology and citations
 
-**Example:**
-```bash
-python test_document_automation.py
-```
+**Sample Deliverables:**
+
+The repository includes real examples of auto-generated deliverables:
+
+- `financial_analysis_deck.pptx` - Executive summary presentation
+- `SaaS_Unit_Economics_Analysis.pptx` - SaaS business model analysis
+- `Monthly_vs_Annual_Billing_Analysis.pptx` - Pricing strategy comparison
+- `Monthly_vs_Annual_Billing_Analysis.xlsx` - Financial modeling workbook
+
+These demonstrate the quality and structure of outputs the system generates from single business queries.
 
 ### 2. Research Augmentation (RAG)
 
@@ -185,21 +225,23 @@ Hybrid LLM routing for significant savings:
 
 ## Performance Metrics
 
+![Performance Comparison](docs/screenshots/performance_comparison.png)
+
 ### Speed
 
-| Query Type | Time | vs Sequential | Cache Hit |
-|-----------|------|---------------|-----------|
-| Simple | 5s | New capability | 0.1s |
-| Business | 69s | 2.1x faster | 0.5s |
-| Complex | 153s | 1.5x faster | 1s |
+| Query Type | Time | vs Sequential  | Cache Hit |
+| ---------- | ---- | -------------- | --------- |
+| Simple     | 5s   | New capability | 0.1s      |
+| Business   | 69s  | 2.1x faster    | 0.5s      |
+| Complex    | 153s | 1.5x faster    | 1s        |
 
 ### Cost
 
-| Metric | GPT-5 Only | Hybrid | Savings |
-|--------|-----------|--------|---------|
-| Per Query | $0.30 | $0.043 | 86% |
-| Monthly (100/day) | $900 | $129 | $771 |
-| Annual | $10,800 | $1,548 | $9,252 |
+| Metric            | GPT-5 Only | Hybrid | Savings |
+| ----------------- | ---------- | ------ | ------- |
+| Per Query         | $0.30      | $0.043 | 86%     |
+| Monthly (100/day) | $900       | $129   | $771    |
+| Annual            | $10,800    | $1,548 | $9,252  |
 
 ### Quality
 
@@ -212,21 +254,21 @@ Hybrid LLM routing for significant savings:
 
 ## Technology Stack
 
-| Component | Technology | Purpose |
-|-----------|-----------|---------|
-| Orchestration | LangGraph | State machine workflow |
-| LLM | DeepSeek v3.2-Exp | Primary model (cheap) |
-| LLM Fallback | GPT-5-nano | Quality backup |
-| Routing | SetFit ML classifier | Agent selection |
-| Execution | Python asyncio | Parallel processing |
-| Caching | Redis + File | Performance |
-| Vector Store | ChromaDB | Semantic search |
-| Research APIs | Semantic Scholar, arXiv | Academic papers |
-| Document Gen | python-pptx, openpyxl | PPT & Excel |
-| Charts | matplotlib | Visualizations |
-| API | FastAPI | REST endpoints |
-| Deployment | Docker Compose | Containerization |
-| Monitoring | LangSmith (optional) | Tracing |
+| Component     | Technology              | Purpose                |
+| ------------- | ----------------------- | ---------------------- |
+| Orchestration | LangGraph               | State machine workflow |
+| LLM           | DeepSeek v3.2-Exp       | Primary model (cheap)  |
+| LLM Fallback  | GPT-5-nano              | Quality backup         |
+| Routing       | SetFit ML classifier    | Agent selection        |
+| Execution     | Python asyncio          | Parallel processing    |
+| Caching       | Redis + File            | Performance            |
+| Vector Store  | ChromaDB                | Semantic search        |
+| Research APIs | Semantic Scholar, arXiv | Academic papers        |
+| Document Gen  | python-pptx, openpyxl   | PPT & Excel            |
+| Charts        | matplotlib              | Visualizations         |
+| API           | FastAPI                 | REST endpoints         |
+| Deployment    | Docker Compose          | Containerization       |
+| Monitoring    | LangSmith (optional)    | Tracing                |
 
 ---
 
@@ -272,12 +314,14 @@ multi_agent_workflow/
 ### Environment Variables
 
 **Required:**
+
 ```bash
 OPENAI_API_KEY=sk-proj-...
 OPENAI_MODEL=gpt-5-nano
 ```
 
 **Recommended (for cost savings):**
+
 ```bash
 DEEPSEEK_API_KEY=sk-...
 MODEL_STRATEGY=hybrid  # "gpt5" | "deepseek" | "hybrid"
@@ -286,6 +330,7 @@ REDIS_URL=redis://localhost:6379/0
 ```
 
 **Optional (for tracing):**
+
 ```bash
 LANGCHAIN_TRACING_V2=true
 LANGCHAIN_API_KEY=lsv2_pt_...
@@ -313,6 +358,7 @@ open http://localhost:8000/docs
 ```
 
 **Example Request:**
+
 ```python
 import requests
 
@@ -398,6 +444,7 @@ docker-compose down
 ```
 
 Services included:
+
 - Redis (port 6379) - Caching
 - Orchestrator (port 8000) - API
 
@@ -421,17 +468,18 @@ See [docs/guides/DEPLOYMENT_GUIDE.md](docs/guides/DEPLOYMENT_GUIDE.md) for detai
 
 ### Monthly Costs (100 queries/day)
 
-| Configuration | Cost/Query | Monthly | Annual | Notes |
-|--------------|-----------|---------|--------|-------|
-| GPT-5 Only | $0.30 | $900 | $10,800 | Highest quality |
-| Hybrid (Current) | $0.043 | $129 | $1,548 | Recommended |
-| DeepSeek Only | $0.003 | $9 | $108 | Lowest cost |
+| Configuration    | Cost/Query | Monthly | Annual  | Notes           |
+| ---------------- | ---------- | ------- | ------- | --------------- |
+| GPT-5 Only       | $0.30      | $900    | $10,800 | Highest quality |
+| Hybrid (Current) | $0.043     | $129    | $1,548  | Recommended     |
+| DeepSeek Only    | $0.003     | $9      | $108    | Lowest cost     |
 
 **Savings with Hybrid:** $771/month ($9,252/year) compared to GPT-5 only
 
 ### Cache Benefits
 
 With 60-70% cache hit rate:
+
 - Effective cost: Even lower than $0.043/query
 - Instant responses: 60-138x faster
 - API call reduction: 60%+
@@ -443,17 +491,21 @@ With 60-70% cache hit rate:
 ### Common Issues
 
 **Empty Agent Outputs:**
+
 - Status: Fixed (reasoning_effort set to "low")
 
 **Redis Connection Failed:**
+
 - System automatically falls back to file cache
 - Start Redis: `docker-compose up redis -d`
 
 **Semantic Scholar Rate Limit:**
+
 - System automatically falls back to arXiv
 - 7-day caching reduces API calls by 60%
 
 **DeepSeek API Error:**
+
 - Check `DEEPSEEK_API_KEY` in .env
 - System falls back to GPT-5 automatically
 
@@ -498,6 +550,8 @@ mypy src/ --ignore-missing-imports
 - **Development time**: ~50 hours over 3 weeks
 - **Commits**: 25+ commits
 
+**Result:** Built a multi-agent BI system with academic research integration that auto-generates PowerPoint and Excel deliverables, achieves 2.1x speedup with parallelization, and cuts costs by 86% per query. Built in roughly 50 hours over 3 weeks.
+
 ---
 
 ## Roadmap
@@ -532,7 +586,7 @@ mypy src/ --ignore-missing-imports
 
 ## License
 
-[Add your license here]
+MIT License. See [LICENSE](LICENSE) for details.
 
 ---
 
@@ -549,11 +603,3 @@ mypy src/ --ignore-missing-imports
 - **LangChain** - LangGraph orchestration framework
 - **Semantic Scholar** - Free academic research API
 - **ChromaDB** - Simple, effective vector store
-
----
-
-**Built with**: Python, LangGraph, FastAPI, Docker, DeepSeek, GPT-5
-**Status**: Production-Ready
-**Last Updated**: November 17, 2025
-
-For complete documentation, start with **[docs/core/INDEX.md](docs/core/INDEX.md)**

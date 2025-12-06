@@ -1,30 +1,26 @@
 import os, pickle
-p = "models/routing_classifier.pkl"
-print("exists:", os.path.exists(p), "size:", os.path.getsize(p) if os.path.exists(p) else None)
-
-# optional: import torch first so torch classes are available during unpickle
+p = 'models/routing_classifier.pkl'
+print('exists:', os.path.exists(p), 'size:', os.path.getsize(p) if os.path.exists(p) else None)
 try:
     import torch
-    print("torch:", torch.__version__)
+    print('torch:', torch.__version__)
 except Exception:
-    print("torch not available")
-
+    print('torch not available')
 try:
     import joblib
     model = joblib.load(p)
-    print("loaded with joblib:", type(model))
+    print('loaded with joblib:', type(model))
 except Exception as e:
-    print("joblib load failed:", repr(e))
+    print('joblib load failed:', repr(e))
     try:
-        with open(p, "rb") as f:
-            model = pickle.load(f, encoding="latin1")
-            print("loaded with pickle:", type(model))
+        with open(p, 'rb') as f:
+            model = pickle.load(f, encoding='latin1')
+            print('loaded with pickle:', type(model))
     except Exception as e2:
-        print("pickle load failed:", repr(e2))
+        print('pickle load failed:', repr(e2))
         raise
-# print small introspection only
 try:
-    print("has predict:", hasattr(model, "predict"))
-    print("repr head:", repr(model)[:500])
+    print('has predict:', hasattr(model, 'predict'))
+    print('repr head:', repr(model)[:500])
 except Exception:
     pass
