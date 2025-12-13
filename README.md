@@ -1,4 +1,4 @@
-# Multi-Agent BI Orchestrator
+# LangGraph BI Agent Orchestrator         
 
 ![Python](https://img.shields.io/badge/python-3.12+-blue)
 ![LangGraph](https://img.shields.io/badge/LangGraph-multi--agent-purple)
